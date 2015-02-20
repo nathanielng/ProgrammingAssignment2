@@ -7,7 +7,7 @@ makeCacheMatrix <- function(x = matrix()) {
   m <- NULL
   set <- function(y) {
     x <<- y
-    m <<- NULL
+    m <<- NULL #reset the cache, m, which stores the inverse
   }
   get <- function() x
   setinverse <- function(myinv) m <<- myinv
@@ -27,7 +27,7 @@ cacheSolve <- function(x, ...) {
     return(m)
   }
   data <- x$get()
-  m <- solve(data, ...)
+  m <- solve(data, ...) #find inverse via solve() function
   x$setinverse(m)
   m
 }
